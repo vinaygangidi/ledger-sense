@@ -34,6 +34,8 @@ Codex independently chose the detailed deterministic-vs-model boundary, the five
 
 Verification caught two real defects: a deliberately weak-evidence payer was correctly unresolved but initially received 99% confidence, so Codex added explicit evidence bands to the prompt and caps unresolved results at 35%; and a simplistic `HOLD` string check misclassified `OMEGA GLOBAL HOLDINGS` as a compliance hold, so it now recognizes only explicit compliance, sanctions, or legal hold phrases.
 
+Verification also exposed a critical posting-safety gap: GPT-5.6 could recommend `auto_post` without a verified deterministic match. The root cause was twofold—partially paid invoices were excluded from matching even when they retained an open balance, and the routing layer had no safety gate on the model recommendation. Codex made `PARTIAL` invoices matchable against their remaining balance and now permits auto-posting only after a ≥95% deterministic allocation verification; every unsafe model recommendation is forced to `review`. An adversarial audit of all 10 sample datasets now reports zero unsafe auto-posts.
+
 Codex accelerated repository cleanup, backend and frontend implementation, dependency setup, synthetic-data verification, SSE testing, and fresh-clone setup validation. The first implementation attempt did draw on prior patterns in this workspace; it was deliberately discarded at your direction and rebuilt independently with the standard OpenAI SDK only.
 
 ## Quick Start
