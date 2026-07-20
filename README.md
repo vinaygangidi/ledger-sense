@@ -2,6 +2,8 @@
 
 An OpenAI/GPT-5.6 demo that reconciles synthetic bank payments against open AR and produces auditable posting instructions.
 
+**Live demo:** [frontend-jade-nu-15.vercel.app](https://frontend-jade-nu-15.vercel.app)
+
 ## The problem
 
 Cash application is rarely an exact invoice-number lookup. A bank deposit may have a truncated payer name, a DBA or parent-company name, a factoring intermediary, multiple invoices in one payment, a partial amount, or a disputed invoice. Compliance holds add another constraint: a plausible match must still not post automatically.
