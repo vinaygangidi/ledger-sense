@@ -6,9 +6,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
+from dotenv import load_dotenv
 
 from reconciliation import AuditLog, run_pipeline
 
+load_dotenv()
 ROOT = Path(__file__).parent
 audit = AuditLog(ROOT / "data" / "audit.sqlite3")
 app = FastAPI(title="AR Reconciliation Copilot")
