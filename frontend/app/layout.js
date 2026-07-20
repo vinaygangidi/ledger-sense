@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Cash Application Foundry - Azure AI Agent Service",
-  description: "Intelligent cash application powered by Azure AI Foundry Agent Service",
+  title: "AR Reconciliation Copilot",
+  description: "Auditable AR reconciliation with GPT-5.6",
 };
 
 export default function RootLayout({ children }) {
