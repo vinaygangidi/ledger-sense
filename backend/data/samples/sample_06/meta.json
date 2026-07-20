@@ -1,6 +1,6 @@
 {
   "sample_id": "06",
   "label": "Timing Issues - Post-Dated, Stale Check, NSF, Duplicates",
-  "transactions": 8,
+  "transactions": 9,
   "invoices": 6
 }

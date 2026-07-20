@@ -471,7 +471,10 @@ bank={
          "remittance_text":"PREPAYMENT order PO-7751 expected August","note":"PREPAYMENT ADVANCE: No invoice exists. Customer paying ahead of order PO-7751. Post to GL 2050 Unearned Revenue."},
         {"txn_id":"TXN-06-008","date":"2024-07-24","amount":29000.00,"currency":"USD",
          "payment_type":"ACH","payer_raw":"NORTHERN PARTS CO","bank_reference":"ACH20240724008",
-         "remittance_text":"INV-06-006","note":"Clean exact match payment"}
+         "remittance_text":"INV-06-006","note":"Clean exact match payment"},
+        {"txn_id":"TXN-06-009","date":"2024-07-29","amount":12750.00,"currency":"USD",
+         "payment_type":"ACH","payer_raw":"PAYMENT PROCESSING 123","bank_reference":"ACH20240729009",
+         "remittance_text":"monthly transfer","note":"UNIDENTIFIED PAYER: Generic bank descriptor with no known customer alias, invoice reference, or remittance evidence. Route to analyst review; do not post."}
     ]
 },
 ar={

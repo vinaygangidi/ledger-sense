@@ -7,7 +7,7 @@ const stageDetail={normalize:"Deterministic + GPT-5.6",ledger_index:"Determinist
 const money=(n,c="USD")=>new Intl.NumberFormat("en-US",{style:"currency",currency:c}).format(Number(n));
 export default function Home(){
  const [data,setData]=useState(null),[done,setDone]=useState([]),[out,setOut]=useState([]),[run,setRun]=useState(""),[busy,setBusy]=useState(false);
- useEffect(()=>{fetch(`${API}/demo-data?sample=04`).then(x=>x.json()).then(setData)},[]);
+ useEffect(()=>{const sample=new URLSearchParams(window.location.search).get("sample")||"04";fetch(`${API}/demo-data?sample=${sample}`).then(x=>x.json()).then(setData)},[]);
  async function reconcile(){if(!data)return;setBusy(true);setDone([]);setOut([]);
   const r=await fetch(`${API}/analyze`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({bank_data:data.bank_statement,ar_data:data.open_ar})});
   const reader=r.body.getReader();let buf="";while(true){const {value,done:closed}=await reader.read();if(closed)break;buf+=new TextDecoder().decode(value);const parts=buf.split("\n\n");buf=parts.pop();for(const p of parts){if(!p.startsWith("data: ")||p==="data: [DONE]")continue;const e=JSON.parse(p.slice(6));setRun(e.run_id||run);if(e.event==="stage")setDone(v=>v.includes(e.stage)?v:[...v,e.stage]);if(e.event==="stage"&&e.output)setOut(v=>[...v,e.output]);}}setBusy(false)}
