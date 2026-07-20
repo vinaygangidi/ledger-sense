@@ -30,7 +30,9 @@ This project was built with Codex under explicit product direction.
 
 You directed the OpenAI-only stack, GPT-5.6 usage, the AR reconciliation domain, the need for an append-only local audit trail, and the distinction between deterministic matching and model judgment. You also required an honest reset after an earlier implementation followed old Azure-oriented patterns.
 
-Codex independently chose the detailed deterministic-vs-model boundary, the five-stage sequencing, `Decimal` arithmetic for allocations, SQLite triggers to enforce append-only audit records, confidence scoring, the SSE event shape, and the compact before/after dashboard.
+Codex independently chose the detailed deterministic-vs-model boundary, the five-stage sequencing, `Decimal` arithmetic for allocations, SQLite triggers to enforce append-only audit records, confidence scoring, the SSE event shape, and the compact before/after dashboard. It also designed the ledger-grounded GPT-5.6 entity-resolution prompt: payer names are resolved only against the supplied customer and alias catalog, with a proposed relationship, confidence, and rationale. GPT-5.6 also generates the analyst-readable routing rationale displayed for every result.
+
+Verification caught two real defects: a deliberately weak-evidence payer was correctly unresolved but initially received 99% confidence, so Codex added explicit evidence bands to the prompt and caps unresolved results at 35%; and a simplistic `HOLD` string check misclassified `OMEGA GLOBAL HOLDINGS` as a compliance hold, so it now recognizes only explicit compliance, sanctions, or legal hold phrases.
 
 Codex accelerated repository cleanup, backend and frontend implementation, dependency setup, synthetic-data verification, SSE testing, and fresh-clone setup validation. The first implementation attempt did draw on prior patterns in this workspace; it was deliberately discarded at your direction and rebuilt independently with the standard OpenAI SDK only.
 
