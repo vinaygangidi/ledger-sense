@@ -37,7 +37,20 @@ def masked_key_status(key: str) -> str:
 
 audit = AuditLog(ROOT / "data" / "audit.sqlite3")
 app = FastAPI(title="AR Reconciliation Copilot")
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+
+def cors_origins() -> list[str]:
+    configured = os.getenv("CORS_ORIGINS", "")
+    origins = [origin.strip().rstrip("/") for origin in configured.split(",") if origin.strip()]
+    return origins or ["http://localhost:3000", "http://127.0.0.1:3000"]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=cors_origins(),
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
+)
 
 class AnalyzeRequest(BaseModel):
     bank_data: dict
