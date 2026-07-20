@@ -379,7 +379,7 @@ bank={
          "remittance_text":"INV-05-002 GBP 30000 @ 1.2715","note":"GBP SWIFT: 30,000 GBP at 1.2715 USD/GBP = $38,145 USD. Verify FX rate."},
         {"txn_id":"TXN-05-003","date":"2024-07-09","amount":29600.00,"currency":"USD",
          "payment_type":"SWIFT","payer_raw":"AMSTERDAM SUPPLY BV","bank_reference":"SWIFT20240709003",
-         "remittance_text":"INV-05-003 EUR 27500 @ 1.0764","note":"FX RATE MISMATCH: 27,500 EUR converted at 1.0764 = $29,601. Invoice expected $29,700 (based on deal rate 1.08). Delta $100 - FX rate difference."},
+         "remittance_text":"INV-05-003 EUR 27500 @ 1.0764","note":"FX RATE MISMATCH: 27,500 EUR converted at 1.0764 = $29,601; actual settlement received $29,600 after $1 rounding. Invoice expected $29,700 (deal rate 1.08), leaving a $100 invoice-level FX difference."},
         {"txn_id":"TXN-05-004","date":"2024-07-12","amount":22200.00,"currency":"USD",
          "payment_type":"ACH","payer_raw":"TORONTO DISTRIBUTORS INC","bank_reference":"ACH20240712004",
          "remittance_text":"INV-05-004 CAD 30000 @ 0.74","note":"CAD ACH: 30,000 CAD at 0.74 USD/CAD = $22,200 USD. Exact match after FX conversion."},
