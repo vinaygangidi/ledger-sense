@@ -184,4 +184,6 @@ async def run_pipeline(run_id, bank, ledger, audit):
           "allocation_verified":bool(match and sum((i["open_amount"] for i in match[1]),Decimal("0"))==payment["amount"])}
         await audit.append(run_id,"posting","posting_instruction",posting); postings.append(posting)
         yield evt("posting","complete",transaction_id=payment["txn_id"],output=posting)
+    # The dashboard marks stage 4 complete only once every routing decision is final.
+    yield evt("exception_reasoning","complete",count=len(postings))
     yield {"event":"complete","run_id":run_id,"results":postings}

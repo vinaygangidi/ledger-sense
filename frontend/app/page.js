@@ -3,6 +3,7 @@ import {useEffect,useState} from "react";
 const API=process.env.NEXT_PUBLIC_API_URL||"/api";
 const stages=["normalize","ledger_index","match","exception_reasoning","posting"];
 const label={normalize:"Normalize payments",ledger_index:"Index open AR",match:"Verify candidates",exception_reasoning:"Reason exceptions",posting:"Create postings"};
+const stageDetail={normalize:"Deterministic + GPT-5.6",ledger_index:"Deterministic code",match:"Deterministic code",exception_reasoning:"GPT-5.6 + safety policy",posting:"Deterministic code"};
 const money=(n,c="USD")=>new Intl.NumberFormat("en-US",{style:"currency",currency:c}).format(Number(n));
 export default function Home(){
  const [data,setData]=useState(null),[done,setDone]=useState([]),[out,setOut]=useState([]),[run,setRun]=useState(""),[busy,setBusy]=useState(false);
@@ -16,7 +17,7 @@ export default function Home(){
    <div><div className="hero-tags"><p className="eyebrow">OpenAI · GPT-5.6</p><span className="build-badge">Built for OpenAI Build Week — Codex + GPT-5.6</span></div><h1>AR Reconciliation<br/>Copilot</h1><p className="subtitle">Verified matching, with human-safe exception routing.</p></div>
    <button disabled={busy||!data} onClick={reconcile}><i>{busy?"◌":"↗"}</i>{busy?"Running pipeline…":"Run synthetic demo"}</button>
   </header>
-  <section className="pipeline" aria-label="Reconciliation pipeline">{stages.map((s,i)=><div className={`stage ${done.includes(s)?"on":""}`} key={s}><b>{done.includes(s)?"✓":String(i+1).padStart(2,"0")}</b><div><strong>{label[s]}</strong><small>{s==="exception_reasoning"?"GPT-5.6 judgment":"Deterministic code"}</small></div></div>)}</section>
+  <section className="pipeline" aria-label="Reconciliation pipeline">{stages.map((s,i)=><div className={`stage ${done.includes(s)?"on":""}`} key={s}><b>{done.includes(s)?"✓":String(i+1).padStart(2,"0")}</b><div><strong>{label[s]}</strong><small>{stageDetail[s]}</small></div></div>)}</section>
   <section className="comparison-head"><div><p className="section-kicker">Reconciliation workspace</p><h2>Payments, resolved.</h2></div><p>{busy?"Streaming agent decisions in real time.":"Run the sample pipeline to see each verified decision."}</p></section>
   <section className="columns">
    <article className="panel before"><div className="panel-head"><div><p className="panel-label">Input</p><h3>Bank payments</h3></div><em>{payments.length} transactions</em></div><div className="table-wrap"><table><thead><tr><th>ID</th><th>Payer</th><th>Remittance</th><th className="amount">Amount</th></tr></thead><tbody>{payments.map(p=><tr key={p.txn_id}><td className="mono">{p.txn_id}</td><td className="payer">{p.payer_raw}</td><td className="muted">{p.remittance_text||"—"}</td><td className="amount">{money(p.amount,p.currency)}</td></tr>)}</tbody></table></div></article>
