@@ -39,16 +39,29 @@ class AuditLog:
         return await asyncio.to_thread(read)
 
 def entity_catalog(ledger, invoices):
-    aliases = ledger.get("aliases", {}) or ledger.get("payer_aliases", {}) or {}
     customers = {}
     for invoice in invoices:
-        customers.setdefault(invoice["customer_name"], {"customer_name": invoice["customer_name"], "customer_id": invoice.get("customer_id"), "aliases": []})
-    for alias, target in aliases.items():
-        if isinstance(target, str):
-            for customer in customers.values():
-                if target in (customer["customer_name"], customer["customer_id"]):
-                    customer["aliases"].append(alias)
+        customers.setdefault(invoice["customer_name"], {"customer_name": invoice["customer_name"], "customer_id": invoice.get("customer_id"), "aliases": [], "relationships": [], "ledger_notes": []})
+        customers[invoice["customer_name"]]["ledger_notes"].append(invoice.get("note", ""))
+    by_id = {c["customer_id"]: c for c in customers.values()}
+    for alias in ledger.get("payer_alias_registry", []):
+        customer = by_id.get(alias.get("canonical_customer_id"))
+        if customer:
+            customer["aliases"].append(alias.get("payer_alias"))
+            customer["relationships"].append(alias.get("match_type", "ALIAS"))
+    for parent in ledger.get("parent_child_hierarchy", []):
+        for child_id in parent.get("children", []):
+            customer = by_id.get(child_id)
+            if customer:
+                customer["aliases"].append(parent.get("parent_name"))
+                customer["relationships"].append("PARENT_PAYS_CHILD")
     return list(customers.values())
+
+def parse_json(text):
+    try: return json.loads(text)
+    except Exception:
+        match = re.search(r"\{[\s\S]*\}", text or "")
+        return json.loads(match.group(0)) if match else None
 
 async def resolve_entity(payment, catalog):
     """GPT-5.6 judges entity identity; it is restricted to ledger-supplied candidates."""
@@ -58,16 +71,30 @@ async def resolve_entity(payment, catalog):
     prompt = {
         "raw_payer": payment["payer_raw"], "remittance": payment["remittance"],
         "known_entities": catalog,
-        "task": "Resolve the payer to exactly one supplied entity only when evidence supports it. Consider truncation, DBA/alias, parent/subsidiary, and factoring intermediary relationships. Return JSON: resolved_entity (or null), relationship (direct|dba_alias|parent_paying|factoring_intermediary|unresolved), confidence (0..1), rationale (one short analyst-readable sentence). Never invent an entity."
+        "task": "Resolve the payer to exactly one supplied entity only when evidence supports it. Consider truncation, DBA/alias, parent/subsidiary, and factoring intermediary relationships. Return JSON: resolved_entity (or null), relationship (direct|dba_alias|parent_paying|factoring_intermediary|unresolved), confidence (0..1), rationale (one short analyst-readable sentence). Calibrate confidence: 0.90-1.00 only for exact or documented ledger evidence; 0.60-0.89 for plausible but incomplete evidence; 0.00-0.35 when unresolved, generic, or weak. Never invent an entity."
     }
     response = await AsyncOpenAI().responses.create(model="gpt-5.6", input=json.dumps(prompt),
         text={"format":{"type":"json_object"}})
     try:
-        result = json.loads(response.output_text)
+        result = parse_json(response.output_text)
+        if not result: raise ValueError("empty JSON")
         allowed = {c["customer_name"] for c in catalog}
-        if result.get("resolved_entity") not in allowed: result["resolved_entity"] = None
-        return {"resolved_entity": result.get("resolved_entity"), "relationship": result.get("relationship", "unresolved"),
-                "confidence": float(result.get("confidence", 0)), "rationale": result.get("rationale", "No rationale returned.")}
+        by_id = {c["customer_id"]: c["customer_name"] for c in catalog}
+        entity = result.get("resolved_entity")
+        if isinstance(entity, dict):
+            entity = entity.get("customer_id") or entity.get("customer_name")
+        if entity in by_id:
+            result["resolved_entity"] = by_id[entity]
+        elif entity in allowed:
+            result["resolved_entity"] = entity
+        else:
+            result["resolved_entity"] = None
+        relationship = result.get("relationship", "unresolved")
+        confidence = float(result.get("confidence", 0))
+        if result.get("resolved_entity") is None or relationship == "unresolved":
+            confidence = min(confidence, .35)
+        return {"resolved_entity": result.get("resolved_entity"), "relationship": relationship,
+                "confidence": confidence, "rationale": result.get("rationale", "No rationale returned.")}
     except Exception:
         return {"resolved_entity": None, "relationship": "unresolved", "confidence": .0,
                 "rationale": "Entity-resolution response was not valid JSON."}
@@ -100,7 +127,8 @@ async def reason(payment, verified, entity):
     response=await AsyncOpenAI().responses.create(model="gpt-5.6",input=json.dumps(prompt),
       text={"format":{"type":"json_object"}})
     try:
-        result=json.loads(response.output_text)
+        result=parse_json(response.output_text)
+        if not result: raise ValueError("empty JSON")
         return {"route":result.get("route","review"),"confidence":float(result.get("confidence",.4)),
                 "reason":result.get("rationale","No analyst rationale returned.")}
     except Exception: return {"route":"review","confidence":.4,"reason":"Model output was not valid JSON."}
@@ -127,7 +155,9 @@ async def run_pipeline(run_id, bank, ledger, audit):
         await audit.append(run_id,"match","candidates_verified",{"txn_id":payment["txn_id"],"count":len(verified)})
         yield evt("match","complete",transaction_id=payment["txn_id"],candidates=len(verified))
         decision=await reason(payment,verified,entity)
-        if "HOLD" in (payment.get("note","")+payment["remittance"]).upper(): decision={"route":"compliance_hold","confidence":1,"reason":"Compliance hold: deterministic policy blocked posting."}
+        hold_text = f"{payment.get('note', '')} {payment['remittance']}".upper()
+        if re.search(r"\b(?:COMPLIANCE|SANCTIONS|LEGAL)\s+HOLD\b", hold_text):
+            decision={"route":"compliance_hold","confidence":1,"reason":"Compliance hold: deterministic policy blocked posting."}
         elif verified and verified[0][2]>=.95:
             source=" via GPT-5.6 entity resolution" if entity["resolved_entity"] else ""
             fallback=f"Auto-posted: verified {verified[0][0]} allocation{source}."
