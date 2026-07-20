@@ -101,7 +101,9 @@ async def resolve_entity(payment, catalog):
 
 def candidates(payment, invoices):
     refs=payment["remittance"].upper()
-    possible=[i for i in invoices if i["currency"]==payment["currency"] and i["status"]=="OPEN"]
+    # A partially paid invoice remains eligible against its *remaining* open balance.
+    # Its status describes payment history, not whether it can receive another payment.
+    possible=[i for i in invoices if i["currency"]==payment["currency"] and i["status"] in {"OPEN","PARTIAL"}]
     choices=[]
     for inv in possible:
         ref=inv["invoice_id"] in refs or (inv.get("po_reference") and inv["po_reference"] in refs)
@@ -117,13 +119,23 @@ def candidates(payment, invoices):
                 choices.append(("multi_invoice",list(group),.97))
     return sorted(choices,key=lambda c:c[2],reverse=True)
 
+def enforce_auto_post_safety(decision, verified):
+    """Auto-posting is permitted only with a high-confidence, code-verified allocation."""
+    if decision["route"] == "auto_post" and (not verified or verified[0][2] < .95):
+        return {
+            "route": "review",
+            "confidence": min(float(decision.get("confidence", .4)), .45),
+            "reason": "Review required: no high-confidence deterministic invoice allocation was verified."
+        }
+    return decision
+
 async def reason(payment, verified, entity):
     if not os.getenv("OPENAI_API_KEY"):
         return {"route":"review","confidence":.45,"reason":"No API key: safe demo review route."}
     prompt={"payment":{k:str(v) for k,v in payment.items()},
       "entity_resolution":entity,
       "candidates":[{"strategy":s,"invoice_ids":[i["invoice_id"] for i in group],"confidence":c} for s,group,c in verified],
-      "instruction":"Return JSON with route (auto_post|review|dispute|compliance_hold), confidence (0..1), and rationale. Write one short analyst-readable rationale for this final route. Do not invent amounts or invoice IDs."}
+      "instruction":"Return JSON with route (auto_post|review|dispute|compliance_hold), confidence (0..1), and rationale. Write one short analyst-readable rationale for this final route. Recommend auto_post only when a supplied candidate is a high-confidence, code-verified allocation. Do not invent amounts or invoice IDs."}
     response=await AsyncOpenAI().responses.create(model="gpt-5.6",input=json.dumps(prompt),
       text={"format":{"type":"json_object"}})
     try:
@@ -163,6 +175,7 @@ async def run_pipeline(run_id, bank, ledger, audit):
             fallback=f"Auto-posted: verified {verified[0][0]} allocation{source}."
             decision={"route":"auto_post","confidence":verified[0][2],
                       "reason":decision["reason"] if os.getenv("OPENAI_API_KEY") else fallback}
+        decision=enforce_auto_post_safety(decision, verified)
         await audit.append(run_id,"exception_reasoning","route_decided",{"txn_id":payment["txn_id"],**decision})
         match=verified[0] if decision["route"]=="auto_post" and verified else None
         posting={"transaction_id":payment["txn_id"],"route":decision["route"],"confidence":decision["confidence"],
