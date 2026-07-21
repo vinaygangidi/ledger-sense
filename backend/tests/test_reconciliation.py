@@ -84,9 +84,11 @@ class PipelineStageTests(unittest.IsolatedAsyncioTestCase):
     async def test_routing_payload_excludes_unallowlisted_sensitive_fields(self):
         class FakeResponses:
             input_payload = None
+            request_kwargs = None
 
             async def create(self, **kwargs):
                 self.input_payload = kwargs["input"]
+                self.request_kwargs = kwargs
                 return type("Response", (), {"output_text": '{"route":"review","confidence":0.4,"rationale":"test"}'})()
 
         class FakeClient:
@@ -107,6 +109,7 @@ class PipelineStageTests(unittest.IsolatedAsyncioTestCase):
             await reason(payment, [], {"resolved_entity": None}, [])
 
         sent_payment = json.loads(client.responses.input_payload)["payment"]
+        sent_prompt = json.loads(client.responses.input_payload)
         self.assertEqual(set(sent_payment), {
             "txn_id", "payer_raw", "remittance_text", "amount", "currency",
             "payment_type", "note", "statement_date", "payer", "remittance",
@@ -114,6 +117,8 @@ class PipelineStageTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("account_number", sent_payment)
         self.assertNotIn("routing_number", sent_payment)
         self.assertNotIn("tax_id", sent_payment)
+        self.assertNotIn("temperature", client.responses.request_kwargs)
+        self.assertIn("exact numeric confidence formatted to two decimals", sent_prompt["instruction"])
 
     async def test_exception_stage_completes_after_all_postings(self):
         sample = ROOT / "data" / "samples" / "sample_01"

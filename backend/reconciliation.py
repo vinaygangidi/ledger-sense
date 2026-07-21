@@ -243,7 +243,7 @@ async def reason(payment, verified, entity, facts=None):
       "entity_resolution":entity,
       "deterministic_amount_facts":facts or [],
       "candidates":[{"strategy":s,"invoice_ids":[i["invoice_id"] for i in group],"confidence":c} for s,group,c in verified],
-      "instruction":"Return JSON with route (auto_post|review|dispute|compliance_hold), confidence (0..1), and rationale. Write one short analyst-readable rationale for this final route. Recommend auto_post only when a supplied candidate is a high-confidence, code-verified allocation. Do not invent amounts or invoice IDs."}
+      "instruction":"Return JSON with route (auto_post|review|dispute|compliance_hold), confidence (0..1), and rationale. Write one short analyst-readable rationale for this final route. Recommend auto_post only when a supplied candidate is a high-confidence, code-verified allocation. When routing to review because the highest supplied candidate is below 0.95 confidence, the rationale MUST name that candidate's strategy and its exact numeric confidence formatted to two decimals (for example, 'partial_payment at 0.82 confidence'); do not use only vague wording such as 'not high-confidence'. Do not invent amounts or invoice IDs."}
     try:
         logger.info("Calling GPT-5.6 for routing: transaction_id=%s verified_candidates=%d", payment.get("txn_id", "unknown"), len(verified))
         response=await AsyncOpenAI(timeout=MODEL_TIMEOUT_SECONDS, max_retries=0).responses.create(
