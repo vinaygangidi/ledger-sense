@@ -6,6 +6,22 @@ This is the current technical reference for Ledger Sense. Its source of truth is
 
 Ledger Sense is a reasoning layer for the ambiguous portion of AR cash application. It accepts synthetic bank payments and an Open AR ledger, verifies allocations with deterministic accounting code, uses GPT-5.6 for bounded entity and routing judgment, and records every decision in an append-only SQLite journal.
 
+```mermaid
+flowchart LR
+    B["Bank payments"] --> N["1. Normalize payments\nDeterministic code and GPT-5.6 entity resolution"]
+    L["Open AR ledger"] --> I["2. Index open AR\nDeterministic code"]
+    N --> M["3. Verify candidates\nDeterministic Decimal math"]
+    I --> M
+    M --> R["4. Reason exceptions\nGPT-5.6 judgment and deterministic safety policy"]
+    R --> P["5. Create postings\nDeterministic code"]
+    N --> A[("Append-only SQLite audit")]
+    I --> A
+    M --> A
+    R --> A
+    P --> A
+    P --> S["SSE events to the Next.js dashboard"]
+```
+
 The data flow is intentionally simple.
 
 1. Bank payments enter normalization. The Open AR ledger enters indexing.
