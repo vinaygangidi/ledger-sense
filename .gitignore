@@ -14,3 +14,4 @@ node_modules/
 .DS_Store
 *.log
 backend/data/audit.sqlite3
+CashReconciliationCodex.md

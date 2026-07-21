@@ -4,9 +4,13 @@ An OpenAI/GPT-5.6 demo that reconciles synthetic bank payments against open AR a
 
 **Live demo:** [frontend-jade-nu-15.vercel.app](https://frontend-jade-nu-15.vercel.app)
 
-**Production API:** [Railway health check](https://cash-reconciliation-codex-production.up.railway.app/health)
+The production demo uses a hosted FastAPI backend. Its OpenAI key is stored only as a deployment environment variable; it is never committed to this repository.
 
-The production demo runs on Vercel with a Railway/FastAPI backend. Its OpenAI key is stored only as a Railway environment variable; it is never committed to this repository.
+## Why this isn't just another cash application module
+
+Modern ERPs such as SAP and Oracle Fusion already automate the easy matches: exact invoice references, exact amounts, and known customers. Where they struggle is the ambiguous 15–20% of payments that require real judgment—factoring relationships, DBA aliases, truncated names, and other cases that do not fit a pre-configured rule. Those cases typically land in a manual exception queue with little explanation of why.
+
+Ledger Sense is built specifically for that gap. Instead of a fixed rule engine, GPT-5.6 reasons through ambiguous cases the way an experienced AR analyst would and explains every decision in plain language. It is not a replacement for an ERP ledger or workflow; it is designed to sit alongside one, resolving the cases that traditional rule-based matching cannot confidently handle with full audit traceability.
 
 ## The problem
 
@@ -30,9 +34,15 @@ Financial math stays in deterministic code because a model must never invent an 
 
 The SQLite audit journal is append-only. Each input, candidate set, model decision, policy override, and posting instruction becomes a new event; database triggers reject updates and deletes. That preserves the traceability and control history a real AR team needs for review and compliance.
 
+### Architecture reference
+
+For the full current design, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). The implementation source of truth is [`backend/reconciliation.py`](backend/reconciliation.py): it contains the five-stage async pipeline, deterministic matching, GPT-5.6 prompts, routing hard gates, and the append-only SQLite audit journal. [`backend/main.py`](backend/main.py) exposes the FastAPI/SSE endpoints, while [`frontend/app/page.js`](frontend/app/page.js) consumes SSE events and renders the input, ledger, and posting-decision views.
+
+The runtime flow is: **Next.js dashboard → `POST /analyze` → FastAPI SSE stream → five-agent pipeline → SQLite audit events → posting instructions displayed in the dashboard**. GPT-5.6 is used only for entity resolution and judgment/routing; code verifies all financial math and enforces the final safety controls.
+
 ### Demo observability
 
-During a live run, Railway logs concise GPT-5.6 call and response events, such as the transaction ID, a masked payer preview, the resolved relationship, route, and confidence. Logs deliberately exclude full payer names, remittance details, prompts, response bodies, and secrets.
+During a live run, server logs contain concise GPT-5.6 call and response events, such as the transaction ID, a masked payer preview, the resolved relationship, route, and confidence. Logs deliberately exclude full payer names, remittance details, prompts, response bodies, and secrets.
 
 ## How Codex was used
 
