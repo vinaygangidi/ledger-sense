@@ -1,8 +1,12 @@
-# AR Reconciliation Copilot
+# Uniquely
 
 An OpenAI/GPT-5.6 demo that reconciles synthetic bank payments against open AR and produces auditable posting instructions.
 
 **Live demo:** [frontend-jade-nu-15.vercel.app](https://frontend-jade-nu-15.vercel.app)
+
+**Production API:** [Railway health check](https://cash-reconciliation-codex-production.up.railway.app/health)
+
+The production demo runs on Vercel with a Railway/FastAPI backend. Its OpenAI key is stored only as a Railway environment variable; it is never committed to this repository.
 
 ## The problem
 
@@ -25,6 +29,10 @@ The pipeline runs five sequential stages:
 Financial math stays in deterministic code because a model must never invent an invoice allocation, exchange an amount, or silently accept a rounding error. GPT-5.6 contributes judgment where it is useful: explaining ambiguous evidence and choosing the safest operational route.
 
 The SQLite audit journal is append-only. Each input, candidate set, model decision, policy override, and posting instruction becomes a new event; database triggers reject updates and deletes. That preserves the traceability and control history a real AR team needs for review and compliance.
+
+### Demo observability
+
+During a live run, Railway logs concise GPT-5.6 call and response events, such as the transaction ID, a masked payer preview, the resolved relationship, route, and confidence. Logs deliberately exclude full payer names, remittance details, prompts, response bodies, and secrets.
 
 ## How Codex was used
 
@@ -77,6 +85,6 @@ The synthetic demo works without an API key for deterministic matching. Without 
 
 The repository includes ten synthetic bank-statement and open-AR datasets under `backend/data/samples/`. No real financial data is included.
 
-The dashboard loads sample 01 by default. Click **Run synthetic demo** to see each stage progress in real time, compare raw bank payments with reconciled posting decisions, and inspect the resulting audit run through the backend API.
+The dashboard loads sample 04 by default and includes a **Demo dataset** picker for all ten scenarios. Click **Run synthetic demo** to see each stage progress in real time, compare raw bank payments with reconciled posting decisions, and inspect the resulting audit run through the backend API.
 
 A judge will see verified invoice allocations for high-confidence matches, safe review routing for unresolved cases, and a clear record of why each decision was made.
