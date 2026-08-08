@@ -1,0 +1,139 @@
+{"kind":"deck","id":"pr/jmlvxg","name":"Deck"}
+{"kind":"layout","layoutId":"68f12416-cdf8-4c36-b5f4-2af28879d2b7","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"0480208e-418a-4038-a951-5a0140c0d622","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/9yuqxb","slide":1,"title":"OPENAI BUILD WEEK · CODEX + GPT-5.6","textShapes":5}
+{"kind":"textbox","id":"sh/of2dob2t","slide":1,"text":"OPENAI BUILD WEEK · CODEX + GPT-5.6","textPreview":"OPENAI BUILD WEEK · CODEX + GPT-5.6","textChars":35,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/netcf6l8","slide":1,"text":"Ledger\nSense","textPreview":"Ledger | Sense","textChars":12,"textLines":2,"bbox":[42,190,700,190]}
+{"kind":"textbox","id":"sh/mtkvm14n","slide":1,"text":"A safety-first reasoning layer for the ambiguous AR payments traditional rule engines leave behind.","textPreview":"A safety-first reasoning layer for the ambiguous AR payments traditional rule engines leave behind.","textChars":99,"textLines":1,"bbox":[42,430,650,100]}
+{"kind":"shape","id":"sh/xkvelg3a","slide":1,"bbox":[42,570,360,0]}
+{"kind":"textbox","id":"sh/wjmdsb2p","slide":1,"text":"GPT-5.6 resolves ambiguity. Deterministic code verifies every dollar.","textPreview":"GPT-5.6 resolves ambiguity. Deterministic code verifies every dollar.","textChars":69,"textLines":1,"bbox":[42,592,750,38]}
+{"kind":"textbox","id":"sh/bidcjql4","slide":1,"text":"Ledger Sense AI  |  Work & Productivity","textPreview":"Ledger Sense AI  |  Work & Productivity","textChars":39,"textLines":1,"bbox":[42,674,560,20]}
+{"kind":"notes","id":"nt/9yuqxb","slide":1,"text":""}
+{"kind":"slide","id":"sl/1fv1by","slide":2,"title":"THE PROBLEM","textShapes":9}
+{"kind":"textbox","id":"sh/7mp0byx4","slide":2,"text":"THE PROBLEM","textPreview":"THE PROBLEM","textChars":11,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/8nyh43ep","slide":2,"text":"The hard 15–20% of payments need judgment, not another rule.","textPreview":"The hard 15–20% of payments need judgment, not another rule.","textChars":60,"textLines":1,"bbox":[42,76,1120,86]}
+{"kind":"textbox","id":"sh/torid8fa","slide":2,"text":"Bank statements arrive with truncated payer names, factoring intermediaries, partial payments, disputed invoices, and compliance holds. Exact-match automation stops there.","textPreview":"Bank statements arrive with truncated payer names, factoring intermediaries, partial payments, disputed invoices, and compliance holds. E...","textChars":171,"textLines":1,"bbox":[42,178,530,140]}
+{"kind":"shape","id":"sh/up0j6dwv","slide":2,"bbox":[42,345,170,30]}
+{"kind":"textbox","id":"sh/vq90fyxg","slide":2,"text":"TRUNCATED NAMES","textPreview":"TRUNCATED NAMES","textChars":15,"textLines":1,"bbox":[54,352,146,16]}
+{"kind":"shape","id":"sh/gri183e1","slide":2,"bbox":[225,345,130,30]}
+{"kind":"textbox","id":"sh/hsrih8f6","slide":2,"text":"FACTORING","textPreview":"FACTORING","textChars":9,"textLines":1,"bbox":[237,352,106,16]}
+{"kind":"shape","id":"sh/atwza9wr","slide":2,"bbox":[368,345,125,30]}
+{"kind":"textbox","id":"sh/bu503exw","slide":2,"text":"DISPUTES","textPreview":"DISPUTES","textChars":8,"textLines":1,"bbox":[380,352,101,16]}
+{"kind":"shape","id":"sh/va54ra18","slide":2,"bbox":[625,62,613,550]}
+{"kind":"textbox","id":"sh/xc7mt0je","slide":2,"text":"Messy incoming payments beside the internal open-AR ledger","textPreview":"Messy incoming payments beside the internal open-AR ledger","textChars":58,"textLines":1,"bbox":[42,430,525,70]}
+{"kind":"shape","id":"sh/wbel0vit","slide":2,"bbox":[42,662,1196,0]}
+{"kind":"textbox","id":"sh/n654nq1c","slide":2,"text":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textPreview":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textChars":34,"textLines":1,"bbox":[42,674,380,20]}
+{"kind":"textbox","id":"sh/m5w3ul0r","slide":2,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[1196,674,42,20]}
+{"kind":"image","id":"im/xwvet8ji","slide":2,"name":"","geometry":"roundRect","alt":"Ledger Sense dashboard showing bank payments and open AR ledger","bbox":[642,80,579,516]}
+{"kind":"notes","id":"nt/1fv1by","slide":2,"text":""}
+{"kind":"slide","id":"sl/m9ta0v","slide":3,"title":"HOW IT WORKS","textShapes":15}
+{"kind":"textbox","id":"sh/ve5cbipk","slide":3,"text":"HOW IT WORKS","textPreview":"HOW IT WORKS","textChars":12,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/wfedknqp","slide":3,"text":"Five agents separate judgment from financial truth.","textPreview":"Five agents separate judgment from financial truth.","textChars":51,"textLines":1,"bbox":[42,76,1120,86]}
+{"kind":"shape","id":"sh/hgnuds7a","slide":3,"bbox":[212,358,23,0]}
+{"kind":"shape","id":"sh/ihgvmx8v","slide":3,"bbox":[405,358,95,0]}
+{"kind":"shape","id":"sh/jipwf2pg","slide":3,"bbox":[670,358,115,0]}
+{"kind":"shape","id":"sh/4jydo7q1","slide":3,"bbox":[955,358,87,0]}
+{"kind":"shape","id":"sh/5k7ehs7m","slide":3,"bbox":[42,300,170,116]}
+{"kind":"textbox","id":"sh/ylcvat8r","slide":3,"text":"Bank payments\n+ Open AR","textPreview":"Bank payments | + Open AR","textChars":23,"textLines":2,"bbox":[57,318,140,50]}
+{"kind":"textbox","id":"sh/zmlc3ypc","slide":3,"text":"Input","textPreview":"Input","textChars":5,"textLines":1,"bbox":[57,380,140,20]}
+{"kind":"shape","id":"sh/j2h8va14","slide":3,"bbox":[235,300,170,116]}
+{"kind":"textbox","id":"sh/i18725kj","slide":3,"text":"1. Normalize\nDeterministic + GPT-5.6","textPreview":"1. Normalize | Deterministic + GPT-5.6","textChars":36,"textLines":2,"bbox":[250,318,140,50]}
+{"kind":"textbox","id":"sh/54jqxkju","slide":3,"text":"Entity resolution","textPreview":"Entity resolution","textChars":17,"textLines":1,"bbox":[250,380,140,20]}
+{"kind":"shape","id":"sh/43ap4f29","slide":3,"bbox":[500,300,170,116]}
+{"kind":"textbox","id":"sh/vyhora1s","slide":3,"text":"2–3. Index & verify\nDeterministic Decimal math","textPreview":"2–3. Index & verify | Deterministic Decimal math","textChars":46,"textLines":2,"bbox":[515,318,140,50]}
+{"kind":"textbox","id":"sh/ux87y5k7","slide":3,"text":"Candidate evidence","textPreview":"Candidate evidence","textChars":18,"textLines":1,"bbox":[515,380,140,20]}
+{"kind":"shape","id":"sh/h0zqtkjy","slide":3,"bbox":[785,300,170,116]}
+{"kind":"textbox","id":"sh/wzqp0f2d","slide":3,"text":"4. Reason exceptions\nGPT-5.6 + hard gates","textPreview":"4. Reason exceptions | GPT-5.6 + hard gates","textChars":41,"textLines":2,"bbox":[800,318,140,50]}
+{"kind":"textbox","id":"sh/naxonqlw","slide":3,"text":"Route decision","textPreview":"Route decision","textChars":14,"textLines":1,"bbox":[800,380,140,20]}
+{"kind":"shape","id":"sh/m9o7ulkb","slide":3,"bbox":[1042,300,170,116]}
+{"kind":"textbox","id":"sh/q5or6l43","slide":3,"text":"5. Create postings\nDeterministic","textPreview":"5. Create postings | Deterministic","textChars":32,"textLines":2,"bbox":[1057,318,140,50]}
+{"kind":"textbox","id":"sh/b6x8zq5o","slide":3,"text":"Posting instruction","textPreview":"Posting instruction","textChars":19,"textLines":1,"bbox":[1057,380,140,20]}
+{"kind":"shape","id":"sh/c7698vm9","slide":3,"bbox":[185,500,910,78]}
+{"kind":"textbox","id":"sh/d8fq10nu","slide":3,"text":"Every stage appends its decision to SQLite audit events; SSE streams the same progress to the Next.js dashboard.","textPreview":"Every stage appends its decision to SQLite audit events; SSE streams the same progress to the Next.js dashboard.","textChars":112,"textLines":1,"bbox":[214,524,850,28]}
+{"kind":"shape","id":"sh/y9ora54z","slide":3,"bbox":[42,662,1196,0]}
+{"kind":"textbox","id":"sh/zax83a5k","slide":3,"text":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textPreview":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textChars":34,"textLines":1,"bbox":[42,674,380,20]}
+{"kind":"textbox","id":"sh/0v69cfm5","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[1196,674,42,20]}
+{"kind":"notes","id":"nt/m9ta0v","slide":3,"text":""}
+{"kind":"slide","id":"sl/inkj43","slide":4,"title":"SAFETY ARCHITECTURE","textShapes":18}
+{"kind":"textbox","id":"sh/fed8nu1c","slide":4,"text":"SAFETY ARCHITECTURE","textPreview":"SAFETY ARCHITECTURE","textChars":19,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/gf6pgzix","slide":4,"text":"A model recommendation is never enough to move money.","textPreview":"A model recommendation is never enough to move money.","textChars":53,"textLines":1,"bbox":[42,76,1120,86]}
+{"kind":"textbox","id":"sh/1gfqp4ji","slide":4,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[42,224,46,52]}
+{"kind":"textbox","id":"sh/6p47ap0v","slide":4,"text":"Deterministic math","textPreview":"Deterministic math","textChars":18,"textLines":1,"bbox":[42,290,250,38]}
+{"kind":"textbox","id":"sh/rqdoju10","slide":4,"text":"Amounts, allocations, duplicate checks, and FX calculations use Decimal-backed code.","textPreview":"Amounts, allocations, duplicate checks, and FX calculations use Decimal-backed code.","textChars":84,"textLines":1,"bbox":[42,344,250,130]}
+{"kind":"textbox","id":"sh/srmpczil","slide":4,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[337,224,46,52]}
+{"kind":"textbox","id":"sh/tcvql4j6","slide":4,"text":"GPT-5.6 judgment","textPreview":"GPT-5.6 judgment","textChars":16,"textLines":1,"bbox":[337,290,250,38]}
+{"kind":"textbox","id":"sh/ilk76p0j","slide":4,"text":"Entity resolution, aliases, factoring relationships, and analyst-readable routing rationales.","textPreview":"Entity resolution, aliases, factoring relationships, and analyst-readable routing rationales.","textChars":93,"textLines":1,"bbox":[337,344,250,130]}
+{"kind":"textbox","id":"sh/jmtofa14","slide":4,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[632,224,46,52]}
+{"kind":"textbox","id":"sh/fi90j69k","slide":4,"text":"Hard gates","textPreview":"Hard gates","textChars":10,"textLines":1,"bbox":[632,290,250,38]}
+{"kind":"textbox","id":"sh/eh0ja18z","slide":4,"text":"Compliance and legal holds cannot be bypassed. Auto-post requires a verified allocation at ≥95%.","textPreview":"Compliance and legal holds cannot be bypassed. Auto-post requires a verified allocation at ≥95%.","textChars":96,"textLines":1,"bbox":[632,344,250,130]}
+{"kind":"textbox","id":"sh/1krilgra","slide":4,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[927,224,46,52]}
+{"kind":"textbox","id":"sh/gji1cbq5","slide":4,"text":"Append-only audit","textPreview":"Append-only audit","textChars":17,"textLines":1,"bbox":[927,290,250,38]}
+{"kind":"textbox","id":"sh/3m90n69g","slide":4,"text":"Every agent decision is recorded; no updates or deletes are permitted.","textPreview":"Every agent decision is recorded; no updates or deletes are permitted.","textChars":70,"textLines":1,"bbox":[927,344,250,130]}
+{"kind":"shape","id":"sh/2l0jel8v","slide":4,"bbox":[42,520,1196,0]}
+{"kind":"textbox","id":"sh/poripg7m","slide":4,"text":"Worked example","textPreview":"Worked example","textChars":14,"textLines":1,"bbox":[42,548,200,24]}
+{"kind":"textbox","id":"sh/oni1gbq1","slide":4,"text":"A prior test found an unsafe auto-post recommendation without a verified invoice. The fix: the routing safety gate forces review unless deterministic code verifies the allocation.","textPreview":"A prior test found an unsafe auto-post recommendation without a verified invoice. The fix: the routing safety gate forces review unless d...","textChars":179,"textLines":1,"bbox":[42,582,1110,46]}
+{"kind":"shape","id":"sh/jqp0bm9c","slide":4,"bbox":[42,662,1196,0]}
+{"kind":"textbox","id":"sh/ipwzih8r","slide":4,"text":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textPreview":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textChars":34,"textLines":1,"bbox":[42,674,380,20]}
+{"kind":"textbox","id":"sh/ml43qpsf","slide":4,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1196,674,42,20]}
+{"kind":"notes","id":"nt/inkj43","slide":4,"text":""}
+{"kind":"slide","id":"sl/1j2ojz","slide":5,"title":"DATA PRIVACY","textShapes":9}
+{"kind":"textbox","id":"sh/utkf2h47","slide":5,"text":"DATA PRIVACY","textPreview":"DATA PRIVACY","textChars":12,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/hgbyxc3i","slide":5,"text":"Model context is intentionally narrow and reviewable.","textPreview":"Model context is intentionally narrow and reviewable.","textChars":53,"textLines":1,"bbox":[42,76,1120,86]}
+{"kind":"shape","id":"sh/wf2x4rmx","slide":5,"bbox":[42,212,560,312]}
+{"kind":"shape","id":"sh/3idgzmlo","slide":5,"bbox":[636,212,602,312]}
+{"kind":"textbox","id":"sh/ih4f6h43","slide":5,"text":"Sent to GPT-5.6","textPreview":"Sent to GPT-5.6","textChars":15,"textLines":1,"bbox":[74,248,300,34]}
+{"kind":"textbox","id":"sh/5kvy1w3u","slide":5,"text":"• Payer and remittance text\n• Amount, currency, payment type\n• Statement date and transaction ID\n• Customer identity catalog\n• Narrow deterministic candidate facts","textPreview":"• Payer and remittance text | • Amount, currency, payment type | • Statement date and transaction ID | • Customer identity catalog | • Na...","textChars":163,"textLines":5,"bbox":[74,306,470,170]}
+{"kind":"textbox","id":"sh/4jmx8rm9","slide":5,"text":"Explicitly not forwarded","textPreview":"Explicitly not forwarded","textChars":24,"textLines":1,"bbox":[668,248,430,34]}
+{"kind":"textbox","id":"sh/zm9wn2lk","slide":5,"text":"• Account and routing numbers\n• Tax IDs or arbitrary upstream fields\n• Full ledger records\n• Invoice amounts beyond scoped deterministic facts","textPreview":"• Account and routing numbers | • Tax IDs or arbitrary upstream fields | • Full ledger records | • Invoice amounts beyond scoped determin...","textChars":142,"textLines":4,"bbox":[668,306,500,170]}
+{"kind":"textbox","id":"sh/yl0fux4z","slide":5,"text":"An enforced payment-field allowlist and regression test keep new sensitive integration fields local by default.","textPreview":"An enforced payment-field allowlist and regression test keep new sensitive integration fields local by default.","textChars":111,"textLines":1,"bbox":[42,570,1120,48]}
+{"kind":"shape","id":"sh/of6pcbu9","slide":5,"bbox":[42,662,1196,0]}
+{"kind":"textbox","id":"sh/pgfq5gvu","slide":5,"text":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textPreview":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textChars":34,"textLines":1,"bbox":[42,674,380,20]}
+{"kind":"textbox","id":"sh/2do7a1c3","slide":5,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1196,674,42,20]}
+{"kind":"notes","id":"nt/1j2ojz","slide":5,"text":""}
+{"kind":"slide","id":"sl/2zml26","slide":6,"title":"HOW CODEX MATTERED","textShapes":13}
+{"kind":"textbox","id":"sh/xkvmtcbm","slide":6,"text":"HOW CODEX MATTERED","textPreview":"HOW CODEX MATTERED","textChars":18,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/axk3yxsv","slide":6,"text":"Codex accelerated implementation—and exposed the design flaws worth fixing.","textPreview":"Codex accelerated implementation—and exposed the design flaws worth fixing.","textChars":75,"textLines":1,"bbox":[42,76,1120,86]}
+{"kind":"shape","id":"sh/vyd4r2tg","slide":6,"bbox":[70,556,1140,0]}
+{"kind":"shape","id":"sh/8v2lwna5","slide":6,"bbox":[42,205,340,280]}
+{"kind":"textbox","id":"sh/9wb2psba","slide":6,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[70,232,80,40]}
+{"kind":"textbox","id":"sh/mtk3udsz","slide":6,"text":"Designed","textPreview":"Designed","textChars":8,"textLines":1,"bbox":[70,300,270,42]}
+{"kind":"textbox","id":"sh/nutknitk","slide":6,"text":"Defined the five-agent split: code for math, GPT-5.6 for ambiguity, gates for irreversible actions.","textPreview":"Defined the five-agent split: code for math, GPT-5.6 for ambiguity, gates for irreversible actions.","textChars":99,"textLines":1,"bbox":[70,364,270,94]}
+{"kind":"shape","id":"sh/sr6lsra9","slide":6,"bbox":[66,546,20,20]}
+{"kind":"shape","id":"sh/tsfm1wbu","slide":6,"bbox":[441,205,340,280]}
+{"kind":"textbox","id":"sh/10f2lkz2","slide":6,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[469,232,80,40]}
+{"kind":"textbox","id":"sh/0z61cfyh","slide":6,"text":"Debugged","textPreview":"Debugged","textChars":8,"textLines":1,"bbox":[469,300,270,42]}
+{"kind":"textbox","id":"sh/zyxkjahc","slide":6,"text":"Found the unsafe auto-post path, environment-key shadowing, confidence calibration drift, and alias mapping defects.","textPreview":"Found the unsafe auto-post path, environment-key shadowing, confidence calibration drift, and alias mapping defects.","textChars":116,"textLines":1,"bbox":[469,364,270,94]}
+{"kind":"shape","id":"sh/ex4ja50r","slide":6,"bbox":[465,546,20,20]}
+{"kind":"shape","id":"sh/dwv2h0z6","slide":6,"bbox":[840,205,340,280]}
+{"kind":"textbox","id":"sh/cvm18fil","slide":6,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[868,232,80,40]}
+{"kind":"textbox","id":"sh/rud0fah0","slide":6,"text":"Verified","textPreview":"Verified","textChars":8,"textLines":1,"bbox":[868,300,270,42]}
+{"kind":"textbox","id":"sh/qt4j650f","slide":6,"text":"Built synthetic edge cases, privacy allowlist tests, and a live cross-sample audit across all 83 transactions.","textPreview":"Built synthetic edge cases, privacy allowlist tests, and a live cross-sample audit across all 83 transactions.","textChars":110,"textLines":1,"bbox":[868,364,270,94]}
+{"kind":"shape","id":"sh/xsz2t4za","slide":6,"bbox":[864,546,20,20]}
+{"kind":"shape","id":"sh/wrq1kzyp","slide":6,"bbox":[42,662,1196,0]}
+{"kind":"textbox","id":"sh/g7idc7ad","slide":6,"text":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textPreview":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textChars":34,"textLines":1,"bbox":[42,674,380,20]}
+{"kind":"textbox","id":"sh/h8ru5cby","slide":6,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[1196,674,42,20]}
+{"kind":"notes","id":"nt/2zml26","slide":6,"text":""}
+{"kind":"slide","id":"sl/9087j1","slide":7,"title":"EVIDENCE","textShapes":11}
+{"kind":"textbox","id":"sh/9sfe5kvq","slide":7,"text":"EVIDENCE","textPreview":"EVIDENCE","textChars":8,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/m54fu5wz","slide":7,"text":"The demo makes the safety policy visible—not hidden in a prompt.","textPreview":"The demo makes the safety policy visible—not hidden in a prompt.","textChars":64,"textLines":1,"bbox":[42,76,1120,86]}
+{"kind":"shape","id":"sh/n6xw3adk","slide":7,"bbox":[42,186,580,430]}
+{"kind":"textbox","id":"sh/l4ve10ve","slide":7,"text":"34","textPreview":"34","textChars":2,"textLines":1,"bbox":[676,245,150,70]}
+{"kind":"textbox","id":"sh/y14fq5w3","slide":7,"text":"real-world AR edge cases","textPreview":"real-world AR edge cases","textChars":24,"textLines":1,"bbox":[676,326,150,64]}
+{"kind":"textbox","id":"sh/z2dwzado","slide":7,"text":"83 / 83","textPreview":"83 / 83","textChars":7,"textLines":1,"bbox":[862,245,150,70]}
+{"kind":"textbox","id":"sh/czmxovex","slide":7,"text":"cross-sample audit checks passing","textPreview":"cross-sample audit checks passing","textChars":33,"textLines":1,"bbox":[862,326,150,64]}
+{"kind":"textbox","id":"sh/d0vex0vi","slide":7,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1105,245,150,70]}
+{"kind":"textbox","id":"sh/5k3u1sva","slide":7,"text":"specialized agents","textPreview":"specialized agents","textChars":18,"textLines":1,"bbox":[1105,326,150,64]}
+{"kind":"textbox","id":"sh/kjut87u5","slide":7,"text":"Human review remains the default whenever evidence is incomplete, ambiguous, or blocked by policy.","textPreview":"Human review remains the default whenever evidence is incomplete, ambiguous, or blocked by policy.","textChars":98,"textLines":1,"bbox":[676,462,500,76]}
+{"kind":"shape","id":"sh/jilsz2dk","slide":7,"bbox":[42,662,1196,0]}
+{"kind":"textbox","id":"sh/ihsb6xcz","slide":7,"text":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textPreview":"LEDGER SENSE  ·  OPENAI BUILD WEEK","textChars":34,"textLines":1,"bbox":[42,674,380,20]}
+{"kind":"textbox","id":"sh/xgjaxsve","slide":7,"text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[1196,674,42,20]}
+{"kind":"image","id":"im/psbalcju","slide":7,"name":"","geometry":"roundRect","alt":"Ledger Sense posting instructions showing reviews and auto-post decisions","bbox":[57,201,550,400]}
+{"kind":"notes","id":"nt/9087j1","slide":7,"text":""}
+{"kind":"slide","id":"sl/b8hu68","slide":8,"title":"LEDGER SENSE","textShapes":5}
+{"kind":"textbox","id":"sh/zy94by9s","slide":8,"text":"LEDGER SENSE","textPreview":"LEDGER SENSE","textChars":12,"textLines":1,"bbox":[42,38,650,22]}
+{"kind":"textbox","id":"sh/kzil43ad","slide":8,"text":"Reason through\nwhat rules cannot.","textPreview":"Reason through | what rules cannot.","textChars":33,"textLines":2,"bbox":[42,188,930,210]}
+{"kind":"textbox","id":"sh/l0rmd8ry","slide":8,"text":"GPT-5.6 for ambiguity.\nDeterministic verification for financial truth.\nHard gates for trust.","textPreview":"GPT-5.6 for ambiguity. | Deterministic verification for financial truth. | Hard gates for trust.","textChars":92,"textLines":3,"bbox":[42,470,700,110]}
+{"kind":"shape","id":"sh/m10n6ds3","slide":8,"bbox":[42,614,350,0]}
+{"kind":"textbox","id":"sh/7294fy9o","slide":8,"text":"github.com/vinaygangidi/ledger-sense","textPreview":"github.com/vinaygangidi/ledger-sense","textChars":36,"textLines":1,"bbox":[42,632,550,22]}
+{"kind":"textbox","id":"sh/832583a9","slide":8,"text":"OpenAI Build Week  ·  2026","textPreview":"OpenAI Build Week  ·  2026","textChars":26,"textLines":1,"bbox":[42,674,340,20]}
+{"kind":"notes","id":"nt/b8hu68","slide":8,"text":""}
